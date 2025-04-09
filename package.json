@@ -1,0 +1,9 @@
+{
+  "name": "rnbo-web-synth",
+  "version": "1.0.0",
+  "description": "RNBO Web Synth with OSC support",
+  "main": "index.html",
+  "dependencies": {
+    "osc-js": "^2.1.0"
+  }
+} 

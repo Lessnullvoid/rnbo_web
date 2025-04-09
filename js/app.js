@@ -1,5 +1,5 @@
 async function setup() {
-    const patchExportURL = "export/patch.export.json";
+    const patchExportURL = "export/poli-container.export.json";
 
     // Create AudioContext
     const WAContext = window.AudioContext || window.webkitAudioContext;
@@ -70,6 +70,12 @@ async function setup() {
 
     // Connect the device to the web audio graph
     device.node.connect(outputNode);
+
+    // Initialize OSC handler
+    import('./osc-handler.js').then(module => {
+        const OSCHandler = module.default;
+        new OSCHandler(device);
+    });
 
     // (Optional) Extract the name and rnbo version of the patcher from the description
     document.getElementById("patcher-title").innerText = (patcher.desc.meta.filename || "Unnamed Patcher") + " (v" + patcher.desc.meta.rnboversion + ")";
